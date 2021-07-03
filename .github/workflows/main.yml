@@ -38,3 +38,13 @@ jobs:
           tags: |
              jafumega27/rotten-patatoes:latest
              jafumega27/rotten-patatoes:${{ github.run_number }}
+  CD:
+      runs-on: ubuntu-latest
+      needs: [CI]
+      steps:
+        - uses: actions/checkout@v2
+        - name: Kubernetes set context
+          uses: Azure/k8s-set-context@v1.1
+          with:
+            method: kubeconfig
+            kubeconfig: ${{secrets.kubeconfig}}
