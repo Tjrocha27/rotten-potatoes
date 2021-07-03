@@ -36,5 +36,5 @@ jobs:
           file: ./src/Dockerfile
           push: true
           tags: |
-             jafumega27/rotten-patatoes:v1
+             jafumega27/rotten-patatoes:latest
              jafumega27/rotten-patatoes:${{ github.run_number }}
