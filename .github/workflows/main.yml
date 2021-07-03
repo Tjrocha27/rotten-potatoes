@@ -48,3 +48,16 @@ jobs:
           with:
             method: kubeconfig
             kubeconfig: ${{secrets.kubeconfig}}
+        - name: Deploy Mongo
+          uses: Azure/k8s-deploy@v1
+          with:
+            manifests: |
+              k8s/mongodb/deployment.yaml
+              k8s/mongodb/service.yaml
+        - name: Deploy Web
+          uses: Azure/k8s-deploy@v1
+          with:
+            manifests: |
+              k8s/web/deployment.yaml
+              k8s/web/service.
+            images: jafumega27/rotten-patatoes:${{ github.run_number }}
